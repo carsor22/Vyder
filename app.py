@@ -1,22 +1,22 @@
-from flask import render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for
 from flask_bootstrap import Bootstrap
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField
-from flask_login import LoginManager, UserMixin, login_user, login_required,logout_user, current_user
 from wtforms.validators import InputRequired, Email, Length
-from werkzeug.security import generate_password_hash, check_password_hash
 from flask_sqlalchemy  import SQLAlchemy
+from werkzeug.security import generate_password_hash, check_password_hash
+from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
+
 
 app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////Users/roddycarson/environments/vyder/database.db'
+app.config['SECRET_KEY'] = 'Thisissupposedtobesecret'
 bootstrap = Bootstrap(app)
-app.config['SQLALCHEMY_DATABASE_URI']= ('sqlite:////Users/roddycarson/environments/Vyder/database.db')
-app.config['SECRET_KEY']= ('SECRET_KEY')
 SQLALCHEMY_TRACK_MODIFICATIONS = False
-login_manager = LoginManager()
 db = SQLAlchemy(app)
-login_manager= LoginManager()
+login_manager = LoginManager()
 login_manager.init_app(app)
-login_manager.login_view= 'login'
+login_manager.login_view = 'login'
 
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -26,7 +26,7 @@ class User(UserMixin, db.Model):
 
 @login_manager.user_loader
 def load_user(user_id):
-  return User.query.get(int(user_id))
+    return User.query.get(int(user_id))
 
 class LoginForm(FlaskForm):
     username= StringField('username', validators=[InputRequired(), Length(min=4, max=15)])
@@ -37,7 +37,6 @@ class RegisterForm(FlaskForm):
     email = StringField('email', validators=[InputRequired(), Email(message='Invalid email'), Length(max=50)])
     username = StringField('username', validators=[InputRequired(), Length(min=4, max=15)])
     password = PasswordField('password', validators=[InputRequired(), Length(min=8, max=80)])
-
 
 @app.route('/') 
 def index():
