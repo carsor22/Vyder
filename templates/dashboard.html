@@ -1,0 +1,125 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}
+Dashboard
+{% endblock %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="{{url_for('.static', filename='css/dashboard.css')}}">
+{% endblock %}
+
+{% block content %}
+
+<body class="body">
+      <div class="navbar navbar-dark bg-dark shadow-sm" style="background-color: #fE4800;">
+        <div class="container d-flex justify-content-between">
+          <a href="/" class="navbar-brand d-flex align-items-center">
+            <strong style="color:white;">Vyder</strong>
+          </a>
+	  <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+          </ul>
+        </div>
+        </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li class="active"><a href="#">My Budget<span class="sr-only">(current)</span></a></li>
+            <li><a href="#">Page 2</a></li>
+            <li><a href="#">Page 3</a></li>
+            <li><a href="#">Page 4</a></li>
+          </ul>
+	</div>
+      </div>
+    </div>
+	
+     </div>
+         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <h1 class="page-header">Welcome, {{ name }}</h1>
+	<div class="container-fluid">
+  <div class="row">
+   <div class="col-11 mx-auto pt-3">
+	    <h3 class="mb-4" id="sTitle">Set A Budget</h3>
+    <div class="row">
+     <div class="col-md-5 my-3">
+      <!-- budget feedback -->
+      <div class="income-feedback alert alert-danger text-capitalize">budget feedback</div>
+      <!-- budget form -->
+      <form id="income-form" class="income-form">
+       <h5 class="text-capitalize">Enter Your Monthly Income</h5>
+       <div class="form-group">
+        <input type="number" class="form-control income-input" id="income-input">
+       </div>
+       <!-- submit button -->
+       <button type="submit" class="btn text-capitalize income-submit" id="income-submit">Add</button>
+      </form>
+     </div>
+     <div class="col-md-7">
+      <!-- app info -->
+      <div class="row my-3">
+       <div class="col-4 text-center mb-2">
+        <h6 class="text-uppercase info-title">Income</h6>
+        <span class="income-icon"><i class="fas fa-wallet"></i></span>
+        <h4 class="text-uppercase mt-2 income" id="income"><span>£ </span><span id="income-amount">0</span></h4>
+       </div>
+       <div class="col-4 text-center">
+        <h6 class="text-uppercase info-title">Expenses</h6>
+        <span class="expense-icon"><i class="far fa-user-minus"></i></span>
+        <h4 class="text-uppercase mt-2 expense" id="expense"><span>£ </span><span id="expense-amount">0</span></h4>
+       </div>
+       <div class="col-4 text-center">
+        <h6 class="text-uppercase info-title">Balance</h6>
+        <span class="balance-icon"><i class="fas fa-user-plus"></i></span>
+        <h4 class="text-uppercase mt-2 balance" id="balance"> <span>£ </span><span id="balance-amount">0</span></h4>
+       </div>
+      </div>
+     </div>
+    </div>
+
+    <div class="row">
+     <div class="col-md-5 my-3">
+      <!-- expense feedback -->
+      <div class="expense-feedback alert alert-danger text-capitalize">expense feedback</div>
+      <!-- expense form -->
+      <form id="expense-form" class=" expense-form">
+	      <h5 class="text-capitalize">Enter Your Monthy Expenses</h5>
+       <div class="form-group">
+        <input type="text" class="form-control expense-input" id="expense-input">
+       </div>
+       <h5 class="text-capitalize">Amount</h5>
+       <div class="form-group">
+        <input type="number" class="form-control expense-input" id="amount-input">
+       </div>
+       <!-- submit button -->
+       <button type="submit" class="btn text-capitalize expense-submit" id="expense-submit">Add</button>
+      </form>
+     </div>
+     <div class="col-md-7 my-3">
+      <!-- expense list -->
+      <div class="expense-list" id="expense-list">
+
+       <div class="expense-list__info d-flex justify-content-between text-capitalize">
+        <h5 class="list-item"></h5>
+       </div>
+
+      </div>
+     </div>
+    </div>
+
+
+   </div>
+  </div>
+ </div>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/app.js') }}"></script>
+
+	<script src="https://kit.fontawesome.com/2b8a821b8f.js" crossorigin="anonymous"></script>
+
+	 </div>
+    </div>
+</div>
+</body>
+{% endblock %}

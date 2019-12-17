@@ -1,0 +1,41 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}
+Login
+{% endblock %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" 
+
+href="{{url_for('static', filename='css/login.css')}}">
+
+{% endblock %}
+
+{% block content %}
+
+      <body class="body">
+      <div class="navbar navbar-dark bg-dark shadow-sm" style="background-color: #fE4800;">
+        <div class="container d-flex justify-content-between">
+          <a href="/" class="navbar-brand d-flex align-items-center">
+            <strong style="color:white;">Vyder</strong>
+          </a>
+        </div>
+      </div>    
+
+    <div class="container">
+
+      <form class="form-login" method ="POST" action="/login">
+        <h2 class="form-login-heading">Sign In</h2>
+
+        {{ form.hidden_tag() }}
+	{{wtf.form_field(form.username)}}
+	{{wtf.form_field(form.password)}}
+	{{wtf.form_field(form.remember)}}
+	
+	<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      </form>
+
+    </div> <!-- /container -->
+{% endblock %}

@@ -1,0 +1,93 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet"
+      href="{{url_for('static', filename='css/homepage.css')}}">
+{% endblock %}
+
+{% block content %}
+
+<body class="body">
+      <div class="navbar navbar-dark bg-dark shadow-sm" style="background-color: #fE4800;">
+        <div class="container d-flex justify-content-between">
+          <a href="/" class="navbar-brand d-flex align-items-center">
+            <strong style="color:white;">Vyder</strong>
+          </a>
+        </div>
+      </div>
+  
+
+	<!-- background-image -->
+    
+    <div class="background-image" style="margin-top: -20px;">
+        <div class="container">
+            
+            <!-- text-->
+            <span class="title" style="color:white;">Use your money more effectively</span>
+
+            <p class="desc" style="color:white;">Vyder - providing you with the clarity you need to make better fiancial desicions.</p>
+                
+                <p>
+
+                <a href="/login" class="btn btn-primary btn-lg">Login</a>
+
+				<a href="/register" class="btn btn-primary btn-lg">Sign Up</a>
+
+                </p>
+        </div>
+    </div>
+
+	<div class="items" style = "background-color:#eee">
+	<div class="container">
+            <div class="row">
+                <!-- Left Item -->
+                <div class="col-md-4">
+                    <img src="http://pngimg.com/uploads/piggy_bank/piggy_bank_PNG52.png" class="sImg" width="160" height="160">
+                    <h2> Save </h2>
+                    <h4> Track the amount of money that you set aside and set it in accordance with your budget plans.</h4>
+                </div>
+
+              <!-- Centre Item -->
+
+                <div class="col-md-4 ">
+                    <img src="https://pngriver.com/wp-content/uploads/2018/04/Download-Success-PNG.png" class="sImg" width="160" height="160">
+                    <h2> Goals </h2>
+                    <h4> With a long term fiancial strategy you are able to undertake personal or professional development.  </h4>
+                </div>
+
+                <!-- Right Item -->
+
+                <div class="col-md-4">
+                    <img src="https://yahyaconsultants.com/wp-content/uploads/2018/11/insights.png" class="sImg" width="160" height="160">
+                    <h2> Insight </h2>
+                    <h4> Become more fianacially literate by understanding the impact of spending patterns. </h4>
+                </div>
+            </div>
+        </div>
+	</div>  
+
+	<div class="footer">
+        <div class="top">
+            <div class="container">
+                    <div class="footer-col">
+                        <h3>About</h3>
+                        <h4>Created with Python Flask and Bootstrap as part of the advWT module.</h4>
+            </div>
+        </div>
+   </div>
+	
+	<div class="bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12" style= "color:white;"> Copyright &copy; Roddy Carson 2019 </div>
+                </div>
+            </div>
+        </div>
+	</div>
+    
+</body> 
+
+{% endblock %}
